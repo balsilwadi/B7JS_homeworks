@@ -11,19 +11,19 @@ countPos([-23, -4, 0, 2, 5, 90, 123])  -> 4
 countPos([0, -1, -2, -3])  -> 0
 */
 
-const countPos = (arr) => {
-    let count = 0;
 
-    for(num of arr){
-        if(num > 0) count++;
-    }
-
-    return count;
-}
+const countPos = (arr) =>  arr.filter(num => num > 0).length
 
 // Second way of doing it (Filter function)
-//const countPos = (arr) =>  arr.filter(num => num > 0).length
+// const countPos = (arr) => {
+//     let count = 0;
 
+//     for(num of arr){
+//         if(num > 0) count++;
+//     }
+
+//     return count;
+// }
 console.log(countPos([-45, 0, 0, 34, 5, 67]))
 console.log(countPos([-23, -4, 0, 2, 5, 90, 123]))
 console.log(countPos([0, -1, -2, -3]))
@@ -41,19 +41,18 @@ countA("QA stands for Quality Assurance")  -> 5
 countA("Cypress")  -> 0
 */
 
-const countA = (str) => {
-    let count = 0;
+const countA = (str) => str.split('').filter(letter => letter.toLowerCase() === 'a').length
 
-    for(letter of str){
-        if(letter.toLowerCase() === 'a') count++;
-    }
+// Second way of doing it
+// const countA = (str) => {
+//     let count = 0;
 
-    return count;
-}
+//     for(letter of str){
+//         if(letter.toLowerCase() === 'a') count++;
+//     }
 
-// Second way of doing it (Filter function)
-//const countA2 = (str) => str.split('').filter(letter => letter.toLowerCase() === 'a').length
-
+//     return count;
+// }
 
 console.log(countA("TechGlobal is a QA bootcamp"))
 console.log(countA("QA stands for Quality Assurance"))
