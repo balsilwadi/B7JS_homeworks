@@ -339,7 +339,19 @@ secondMax([7, 4, 4, 4, 23, 23, 23])  -> 7
 secondMax([3, 4, 5, 6])  -> 4
 secondMax([10])  -> 10
 */
+const secondMin = (arr) => {
+  arr = arr.sort((a, b) => a - b)
+  
+  for(num of arr){
+      if(num !== arr[0]) return num;
+  }
 
+  return arr[0]
+}
+  
+console.log(secondMin([7, 4, 4, 4, 23, 23, 23]))
+console.log(secondMin([3, 4, 5, 6]))
+console.log(secondMin([10]))
 // Task 13
 /*
 Requirement:
@@ -353,3 +365,27 @@ mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"])  -> "pen"
 mostRepeated([10])  -> 10
 mostRepeated(["TechGlobal"])  -> "TechGlobal"
 */
+const mostRepeated = (arr) => {
+  let counts = {}
+  let largestCount = 0;
+  let mostRepeated;
+
+  for(el of arr){
+    if(counts[el]){
+        counts[el]++;
+    }else{
+        counts[el] = 1
+    }
+
+    if(counts[el] > largestCount){
+        largestCount = counts[el]
+        mostRepeated = el;
+    }
+  }
+  return mostRepeated
+}
+
+console.log(mostRepeated([4, 7, 4, 4, 4, 23, 23, 23]));  // 4
+console.log(mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"]));  // "pen"
+console.log(mostRepeated([10]));  // 10
+console.log(mostRepeated(["TechGlobal"]));  // "TechGlobal"
