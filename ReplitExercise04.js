@@ -10,15 +10,15 @@ const nthChars = (str, num) => {
 
 //Can Form String
 const canFormString = (str1, str2) => {
-    let arr1 = str1.toLowerCase();
-    let arr2 = str2.toLowerCase().split('').filter(i => i != ' ');
-   
-    for (let i = 0; i < arr2.length; i++) {          
-      if(arr1.includes(arr2[i])) arr1[arr1.indexOf(arr2[i])] = '';      
-      else return false  
-    }
-    return true;
+  let arr1 = str1.toLowerCase().split('');
+  let arr2 = str2.toLowerCase().split('').filter(i => i != ' ');
+
+  for (let i = 0; i < arr2.length; i++) {          
+    if(arr1.includes(arr2[i])) arr1[arr1.indexOf(arr2[i])] = '';      
+    else return false  
   }
+  return true;
+}
 
 
 //Is Anagram
