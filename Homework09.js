@@ -271,12 +271,16 @@ isPowerOf3(100)  -> false
 isPowerOf3(81)  -> true
 isPowerOf3(9)  -> true
 */
-const isPowerOf3 = (num) => {
-    for(let i = num; i > 0; i/=3){
-        if(i === 1) return true
-    }
-    return false
-}
+
+// const isPowerOf3 = (num) => {
+//     for(let i = num; i > 0; i/=3){
+//         if(i === 1) return true
+//     }
+//     return false
+// }
+
+const isPowerOf3 = (num) => num === 1 ? true : num < 1 ? false : isPowerOf3(num/3)
+
 console.log(isPowerOf3(1));     
 console.log(isPowerOf3(2));     
 console.log(isPowerOf3(3));     

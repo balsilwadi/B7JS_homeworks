@@ -262,15 +262,20 @@ const isDateFormatValid = (date) =>{
    const day = date.split('/')[1]
    const year = date.split('/')[2]
  
-   if(month.length !== 2 || day.length !== 2 || year.length !== 4) return false;
- 
-   if(Number(month) < 1 || Number(month) > 12) return false
- 
-   if(Number(day) < 1) return false;
- 
-   if(Number(year) < 1) return false;
- 
-   if(Number(month) === '01')
+
+   let isLeap = Number(year) % 4 === 0
+   let maxDay;
+
+   if(['01','03','05','07','08', '10', '12'].includes(month)) maxDay = 31;
+   else if(['04','06','09','11'].includes(month)) maxDay = 30;
+   else if(month === '02'){
+    if(isLeap) maxDay = 29;
+    else maxDay = 28;
+   }else return false
+
+   if(Number(day) > maxDay || Number(day) < 1 || day.length !== 2) return false;
+   if(year.length !== 4 || Number(year) < 1) return false;
+   
    return true;
  }
  
@@ -384,6 +389,21 @@ const mostRepeated = (arr) => {
   }
   return mostRepeated
 }
+
+const mostRepeated2 = (arr) => {
+  let counts = arr.reduce((acc, curr) => (acc[curr] ? acc[curr] += 1 : acc[curr] = 1, acc),{});
+  let maxCount = 0;
+  let result;
+  for(let item in counts){
+    if(counts[item] > maxCount) {
+      maxCount = counts[item]
+      result = item;
+    }
+    
+  }
+  return result;
+}
+
 
 console.log(mostRepeated([4, 7, 4, 4, 4, 23, 23, 23]));  // 4
 console.log(mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"]));  // "pen"

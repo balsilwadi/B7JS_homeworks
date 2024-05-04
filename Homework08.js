@@ -154,6 +154,8 @@ const getCommons = (arr1, arr2) => {
    return result;
 }
 
+const getCommons2 = (arr1, arr2) => arr1.filter(x => arr2.includes(x)).reduce((result, ele) => result.includes(ele) ? result : [...result, ele], []);
+
 console.log(getCommons(["Javascript", "is", "fun"], ["abc", "xyz", "123"]))
 console.log(getCommons(["Javascript", "is", "fun"], ["Javascript", "C#", "Python"]))
 console.log(getCommons(["Javascript", "C#", "C#"], ["Python", "C#", "C++"]))
@@ -172,13 +174,12 @@ noXInVariables(["x", 123, "#$%"])  -> [123, "#$%"]
 noXInVariables(["xyXyxy", "Xx", "ABC"])  -> ["yyy", "ABC"]
 */
 const noXInVariables = (arr) => {
-    return arr.map(el => {
-        if(typeof el === 'string')
-        return el.split('').filter(x => x.toLowerCase() !== 'x').join('')
-        else return el
-    })
+    return arr.map(el => 
+        typeof el === 'string' ? el.split('').filter(x => x.toLowerCase() !== 'x').join('') : el
+    ).filter(ele => ele)
 }
 
+//const noXInVariables = (arr) => arr.map(el => typeof el === 'number' ? el : el.split('').filter(x => x.toLowerCase() !== 'x').join('')).filter(x => x.length !== 0);
 console.log(noXInVariables(["abc", 123, "#$%"]))
 console.log(noXInVariables(["xyz", 123, "#$%"]))
 console.log(noXInVariables(["x", 123, "#$%"]))

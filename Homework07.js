@@ -128,16 +128,7 @@ arrFactorial([0, 5])  -> [1,120]
 arrFactorial([5 , 0, 6])  -> [120, 1, 720]
 arrFactorial([])  -> []
 */
-const arrFactorial = (arr) =>{
-    return arr.map(num => {
-        let fac = 1;
-        for(let i = 2; i <= num; i++){
-            fac *= i;
-        }
-        return fac;
-    })
-    
-}
+const arrFactorial = (arr) => arr.map(num => [...Array(num).keys()].reduce((fac, ele) => fac * (ele+1), 1));
 
 console.log(arrFactorial([1, 2, 3, 4])); 
 console.log(arrFactorial([0, 5]));       

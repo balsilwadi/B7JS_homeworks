@@ -74,13 +74,7 @@ countVowels("")  -> 0
 */
 
 const countVowels = (word) => {
-    let vowelCounter = 0;
-    const vowels = ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']
-
-    for(letter of word){
-        if(vowels.includes(letter)) vowelCounter++;
-    }
-    return vowelCounter;
+return word.split('').filter(x => 'aeiouAEIOU'.includes(x)).length
 }
 
 console.log(countVowels("Hello"))// 2
@@ -491,18 +485,19 @@ const isEmailValid = (email) => {
 	const middle = email.split('@')[1].split('.')[0]
 	const end = email.split('@')[1].split('.')[1]
  
-	if(beginning === undefined || middle === undefined || end === undefined) return false
+	if(!beginning || !middle || !end) return false
  
    return (beginning.length >= 2 && middle.length >= 2 && end.length >= 2)
  }
  
- console.log(isEmailValid(""))//false
+ console.log(isEmailValid("balsilwadi@gmadil..com"))//false
  console.log(isEmailValid("@gmail.com"))//false
  console.log(isEmailValid("johndoe@yahoo"))//false
  console.log(isEmailValid("johndoe@.com"))//false
  console.log(isEmailValid("johndoe@a.com"))//false
  console.log(isEmailValid("johndoe@@gmail.com"))//false
  console.log(isEmailValid("johndoe@gmail.com"))//true
+
 // Task 15
 /*
 Write a function named as isPasswordValid() which takes a 

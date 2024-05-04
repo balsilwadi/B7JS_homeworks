@@ -88,12 +88,6 @@ console.log(calculateGCD(48, 18));
 console.log(calculateGCD(0, 5));
 console.log(calculateGCD(21, 14));
 console.log(calculateGCD(60, 48));
-console.log(calculateGCD(8, 12));
-console.log(calculateGCD(17, 5));
-console.log(calculateGCD(48, 18));
-console.log(calculateGCD(0, 5));
-console.log(calculateGCD(21, 14));
-console.log(calculateGCD(60, 48));
 
 
 
