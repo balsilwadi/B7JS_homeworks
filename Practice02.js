@@ -135,6 +135,10 @@ Test Data 4: let s5 = "JavaScript";
 Expected Result 4: false
 */
 
+str = '12ab13'
+
+console.log(str.slice(0,2) === str.slice(str.length - 2))
+
 
 
 /*
@@ -166,7 +170,13 @@ Expected Result 4: elloe
 */
 
 
+let s1 = "orange";
+let s2 = "6";
 
+let middle1 = s1.slice(1,s1.length - 1)
+let middle2 = s2.slice(1,s2.length - 1)
+
+console.log(middle1 + middle2)
 /*
 Task08
 
@@ -187,7 +197,9 @@ Expected Result 3: false
 Test Data 4: let s7 = "xxbluexx";
 Expected Result 4: true
 */
+s1 = "xxbluexx"
 
+console.log(s1.startsWith('xx') && s1.endsWith('xx'))
 
 
 /*
