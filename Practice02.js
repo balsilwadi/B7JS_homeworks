@@ -10,7 +10,17 @@ String functions.
 "I don't like books"  -> "I like books"
 */
 
+str1 = "I like apples and orange";//APPLE
+let str2 = "JavaScript is not a scripting programming language";//JavaScript
+let str3 = "I don't like books";
 
+console.log(str1.slice(7,12).toUpperCase())
+
+console.log(str2.slice(0,10))
+// console.log(str2.slice(0,str2.indexOf(' ')))
+// console.log(str2.split(' ')[0])
+
+console.log(str3.slice(0,2) + str3.slice(8))
 /*
 Task02
 
@@ -113,6 +123,15 @@ The first 2 characters are = Ja
 The last 2 characters are = pt
 The other characters  are = vaScri
 */
+
+str = 'abcd'
+let beginning = str.slice(0,2);
+let middle = str.slice(2, str.length-2)
+let end = str.slice(str.length-2);
+
+console.log(`The first 2 characters are = ${beginning}`)
+console.log(`The last 2 characters are = ${end}`)
+console.log(`The other characters are = ${middle}`)
 
 /*
 Task06
@@ -220,7 +239,13 @@ Expected Result 3: "Apple like I"
 Test Data 4: let s8 = "JavaScript is nice to learn";
 Expected Result 4: "learn is nice to JavaScript
 */
+str = "I like Apple"
 
+let first = str.slice(0, str.indexOf(' '))
+middle = str.slice(str.indexOf(' '), str.lastIndexOf(' ') + 1)
+end = str.slice(str.lastIndexOf(' ') + 1)
+
+console.log(end + middle + first)
 
 /*
 Task10
@@ -241,3 +266,7 @@ Expected Result 3: 3
 Test Data 4: let s9 = "JavaScript is nice to learn";
 Expected Result 4: 5
 */
+
+str = 'JavaScript is nice to learn"';
+
+console.log(str.trim().split(' ').length)
