@@ -228,13 +228,17 @@ const removeDuplicates = (arr) => {
  
    return result;
  }
+ const removeDuplicates2 = arr => [...new Set(arr)]; 
+
+ 
  
  console.log(removeDuplicates([10, 20, 35, 20, 35, 60, 70, 60]));  // [10, 20, 35, 60, 70]
  console.log(removeDuplicates([1, 2, 5, 2, 3]));  // [1, 2, 5, 3]
  console.log(removeDuplicates([0, -1, -2, -2, -1]));  // [0, -1, -2]
  console.log(removeDuplicates(["abc", "xyz", "123", "ab", "abc", "ABC"]));  // ["abc", "xyz", "123", "ab", "ABC"]
  console.log(removeDuplicates(["1", "2", "3", "2", "3"]));  // ["1", "2", "3"]
-// Task 10
+
+ // Task 10
 /*
 Requirement:
 Write a method named isDateFormatValid() that takes a 
@@ -326,6 +330,9 @@ const secondMax = (arr) => {
   // }
 
   // return secondMax || max
+
+  const secondMax2 = (arr) => arr.sort((a,b) => b - a).filter(x => x !== Math.max(...arr))[0] || arr[0]
+  
   
 console.log(secondMax([7, 4, 4, 4, 23, 23, 23]))
 console.log(secondMax([3, 4, 5, 6]))
@@ -404,8 +411,30 @@ const mostRepeated2 = (arr) => {
   return result;
 }
 
+const mostRepeated3 = arr => {
+  return arr.sort((a, b) => arr.filter(v => v === a).length - arr.filter(v => v === b).length).pop();
+}
 
 console.log(mostRepeated([4, 7, 4, 4, 4, 23, 23, 23]));  // 4
 console.log(mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"]));  // "pen"
 console.log(mostRepeated([10]));  // 10
 console.log(mostRepeated(["TechGlobal"]));  // "TechGlobal"
+
+
+function sieveOfEratosthenes(n) {
+  // Create an array of true values for marking primes
+  let primes = new Array(n + 1).fill(true);
+  primes[0] = primes[1] = false; // 0 and 1 are not primes
+
+  // Start marking from the first prime number 2
+  for (let i = 2; i <= n; i++) {
+      if (primes[i]) {
+          // Mark all multiples of p as false (not prime)
+          for (let j = i + i; j <= n; j += i) {
+              primes[j] = false;
+          }
+      }
+  }
+  return primes[n]
+}
+console.log(sieveOfEratosthenes(5));  // This will print all prime numbers up to 50

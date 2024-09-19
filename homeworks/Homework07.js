@@ -88,6 +88,13 @@ middleInt(5, 3, 5)  -> 5
 middleInt(1, 1, 1)  -> 1
 middleInt(-1, 25, 10)  -> 10
 */
+
+
+//554
+//445
+//544
+//545
+//454
 const middleInt = (num1, num2, num3) =>  [num1, num2, num3].sort((a, b) => a - b)[1]
 
 //    if(num1 >= num2 && num1 <= num3) return num1
@@ -111,12 +118,27 @@ sumOfDigits("$125.0")  -> 8
 sumOfDigits("")  -> 0
 */
 
-const sumOfDigits = (str) => str.split('').filter(i => i >= '0' && i <= '9').reduce((sum, num) => sum += Number(num), 0)
+//const sumOfDigits = (str) => str.split('').filter(i => i >= '0' && i <= '9').reduce((sum, num) => sum += Number(num), 0)
+const sumOfDigits = (str) => {
+
+    let digits = 0
+    for(let i = 0; i < str.length; i++){
+        if (str[i] === '-' && (str[i+1] >= '0' && str[i+1] <= '9')){
+            digits += (-Number(str[i+1]))
+            i += 1
+            continue;
+        }else if(str[i] >= '0' && str[i] <= '9') digits += (Number(str[i]))
+    }
+    return digits;
+}
 
 console.log(sumOfDigits("Javascript"));     
 console.log(sumOfDigits("John's age is 29")); 
-console.log(sumOfDigits("$125.0"));         
+console.log(sumOfDigits("$1-a-25.0-"));         
 console.log(sumOfDigits("")); 
+
+
+
 // Task 7
 /*
 Requirement:

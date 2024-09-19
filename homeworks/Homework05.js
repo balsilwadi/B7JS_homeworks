@@ -338,10 +338,10 @@ isPrime(1) -> false
 
 const isPrime = (num) => {
     if(num < 2) return false;
-    if(num === 2 || num === 3) return true;
-    if(num % 2 === 0 || num % 3 === 0) return false;
+    if(num === 2 || num === 3 || num === 5) return true;
+    if(num % 2 === 0 || num % 3 === 0 || num % 5 === 0) return false;
 
-    let d = 5;
+    let d = 7;
     while(d < num){
         if(num % d === 0) return false;
         d+=2;
