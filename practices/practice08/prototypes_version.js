@@ -19,7 +19,6 @@ function Books(title, genre, page){
     this.page = page;
 }
 
-
 const book1 = new Books("A Game of Thrones", "Epic Fantasy", 694)
 const book2 = new Books("A Clash of Kings", "Epic Fantasy", 768)
 const book3 = new Books("A Storm of Swords", "Epic Fantasy", 973)

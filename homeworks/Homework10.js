@@ -56,8 +56,8 @@ const calculateTotalPrice2 = items => {
   for(let item in items){
 
       const noSale = items[item] * prices[item]
+      
       let sale = 0;
-
       if(item === 'Apple') sale = (Math.floor(items[item] / 2) * prices[item]) / 2
       else if(item === 'Mango') sale = (Math.floor(items[item] / 4) * prices[item])
           
@@ -122,7 +122,6 @@ reverseNumber(123)  -> 321
 reverseNumber(12)  -> 21
 reverseNumber(0)  -> 0
 reverseNumber(111)  -> 111
-
 */
 
 const reverseNumber = num => {
@@ -163,14 +162,37 @@ console.log(doubleOrTriple([-1, 0, 1], true));
 Note: Return empty string if the string shorter than splitting number or the string length is not divisible by the given number.
 Examples:
 splitString("JavaScript", 5)  -> "JavaS cript"
+splitString("JavaScript", 2)  -> "Ja va Sc ri pt"
 splitString("Java", 2)  -> "Ja va"
 splitString("Automation", 3)  -> ""
 splitString("Hello", 6)  -> ""
 splitString("12", 1)  -> "1 2"
 */
-const splitString = (str, num) => (str.length % num !== 0 || num > str.length) ? '' : str.slice(0, num) + ' ' + str.slice(num)
 
+const splitString1 = (str, num) => {
+
+    if(str.length % num !== 0) return ''
+
+    let splitStr = ''
+    while(str.length > 0){
+        splitStr += str.slice(0, num) + ' '
+        str = str.slice(num)
+    }
+    return splitStr.trim()
+}
+
+const splitString2 = (str, num) => {
+
+    if(str.length % num !== 0) return ''
+
+    let splitStr = ''
+    for(let i = 0; i < str.length; i += num){
+        splitStr += str.slice(i, i+num) + ' '
+    }
+    return splitStr.trim()
+}
 console.log(splitString('JavaScript', 5));
+console.log(splitString('JavaScript', 2));
 console.log(splitString('Java', 2));
 console.log(splitString('Automation', 3));
 console.log(splitString('Hello', 6));

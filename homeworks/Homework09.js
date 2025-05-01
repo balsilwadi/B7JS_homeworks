@@ -62,26 +62,36 @@ findSumNumbers("ab110c045d") -> 155
 findSumNumbers("525") -> 525
 findSumNumbers("3 for 10 dollars") -> 13
 */
-const findSumNumbers = (str) =>  str.split(/\D+/).reduce((sum, numStr) => numStr? sum + Number(numStr): sum, 0);
+// const findSumNumbers = (str) =>  str.split(/\D+/).reduce((sum, numStr) => numStr? sum + Number(numStr): sum, 0);
 //WAY 2:
-    // let total = 0;
-    // let number = '';
+const findSumNumbers = str => {
+    let total = 0;
+    let number = '';
     
-    // for(char of str){
-    //     if(char >= '0' && char <= '9'){
-    //         number += char;
-    //     } 
-    //     else {
-    //         total += Number(number)
-    //         number = ''
-    //     }
-    // }
+    for(char of str){
+        if(char >= '0' && char <= '9'){
+            number += char;
+        } 
+        else if(char === '-'){
+            if(number.length === 0)number += char;
+            else if(number === '-') continue;
+            else{
+                total += Number(number)
+                number = '-'
+            }
+        }else {
+            total += Number(number)
+            number = ''
+        }
+    }
 
-    // if(number) total += Number(number)
-    // return total
+    if(number) total += Number(number)
+    return total
+}
+    
 console.log(findSumNumbers("abc$"));            
 console.log(findSumNumbers("a1b4c  6#"));       
-console.log(findSumNumbers("ab110c045d"));      
+console.log(findSumNumbers("-1---1"));      
 console.log(findSumNumbers("525"));             
 console.log(findSumNumbers("3 for 10 dollars"));
 
@@ -146,7 +156,7 @@ const countOccurrencesOfCharacters = (str) => {
         count = 1
        }
     }
-    result += count + currentLetter
+    
     return result
 }
 
@@ -245,7 +255,12 @@ findUniques([1, 2, 3, 4], [3, 4, 5, 5])  -> [1, 2, 5]
 findUniques([8, 9], [9, 8, 9])  -> []
 findUniques([-1, -2], [1, 2])  -> [-1, -2, 1, 2
 */
-const findUniques = (arr1, arr2) => [...(new Set(arr1.concat(arr2).filter(i => !(arr1.includes(i) && arr2.includes(i)))))]
+const findUniques = (arr1, arr2) =>{
+    const concatArr = arr1.concat(arr2)
+    const filteredArr = concatArr.filter(i => !(arr1.includes(i) && arr2.includes(i)))
+    const set = new Set(filteredArr)
+    return [...set]
+}
 
 console.log(findUniques([], []));             
 console.log(findUniques([], [1, 2, 3, 2]));   
@@ -273,13 +288,14 @@ isPowerOf3(9)  -> true
 */
 
 // const isPowerOf3 = (num) => {
-//     for(let i = num; i > 0; i/=3){
+//     for(let i = num; i >= 1; i/=3){
 //         if(i === 1) return true
 //     }
 //     return false
 // }
 
-const isPowerOf3 = (num) => num === 1 ? true : num < 1 ? false : isPowerOf3(num/3)
+//const isPowerOf3 = (num) => num === 1 ? true : num < 1 ? false : isPowerOf3(num/3)
+const isPowerOf3 = (num) => num === 1 ? true : num % 3 !== 0 ? false : isPowerOf3(num/3)
 
 console.log(isPowerOf3(1));     
 console.log(isPowerOf3(2));     

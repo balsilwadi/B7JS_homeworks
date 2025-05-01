@@ -337,6 +337,7 @@ const secondMax = (arr) => {
 console.log(secondMax([7, 4, 4, 4, 23, 23, 23]))
 console.log(secondMax([3, 4, 5, 6]))
 console.log(secondMax([10]))
+
 // Task 12
 /*
 Requirement:

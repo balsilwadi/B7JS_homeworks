@@ -147,9 +147,9 @@ const getCommons = (arr1, arr2) => {
     arr1 =  arr1.filter(x => arr2.includes(x))
     
     let result = [];
-    arr1.forEach(i => {
-     if(!result.includes(i)) result.push(i)
-   })
+    for(let ele of arr1){
+        if (!result.includes(ele)) result.push(ele) 
+    }
  
    return result;
 }
@@ -177,6 +177,13 @@ const noXInVariables = (arr) => {
     return arr.map(el => 
         typeof el === 'string' ? el.split('').filter(x => x.toLowerCase() !== 'x').join('') : el
     ).filter(ele => ele)
+}
+
+const noXInVariables2 = (arr) => {
+    return arr.reduce((result, el) => {
+        let str = typeof el === 'string' ? el.split('').filter(x => x.toLowerCase() !== 'x').join('') : el 
+        return str ? [...result,str] : result
+    },[])
 }
 
 //const noXInVariables = (arr) => arr.map(el => typeof el === 'number' ? el : el.split('').filter(x => x.toLowerCase() !== 'x').join('')).filter(x => x.length !== 0);

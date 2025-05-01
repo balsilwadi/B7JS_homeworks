@@ -1,4 +1,7 @@
-
+const { Driver } = require('../Driver.js')
+Driver.setDriver()
+Driver.quitDriver()
+Driver.quitDriver()
 /*Task1:
 Requirement
 -Write a program that outputs below sentences
